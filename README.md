@@ -1,0 +1,2 @@
+#  GenshinImpact_MonsterMap
+ 
