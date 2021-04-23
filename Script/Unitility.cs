@@ -49,7 +49,8 @@ namespace 原神地图辅助器
             int height = Math.Abs(windowRect.Y - windowRect.Height);
             //int width = windowRect.Right- windowRect.Left;
             //int height = windowRect.Bottom- windowRect.Top;
-            IntPtr hbitmap = CreateCompatibleBitmap(hscrdc, width, height);
+            //IntPtr hbitmap = CreateCompatibleBitmap(hscrdc, width, height);
+            IntPtr hbitmap = CreateCompatibleBitmap(hscrdc,DataInfo. width, DataInfo.height);
             IntPtr hmemdc = CreateCompatibleDC(hscrdc);
             SelectObject(hmemdc, hbitmap);
             PrintWindow(hWnd, hmemdc, 0);
