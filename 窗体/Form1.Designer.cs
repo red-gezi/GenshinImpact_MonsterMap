@@ -41,24 +41,26 @@
             this.btn_Open = new System.Windows.Forms.Button();
             this.btn_Close = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.V1 = new System.Windows.Forms.NumericUpDown();
+            this.U1 = new System.Windows.Forms.NumericUpDown();
+            this.V0 = new System.Windows.Forms.NumericUpDown();
+            this.U0 = new System.Windows.Forms.NumericUpDown();
             this.btn_SetRect = new System.Windows.Forms.Button();
             this.btn_rect = new System.Windows.Forms.Button();
             this.game_height = new System.Windows.Forms.TextBox();
             this.game_width = new System.Windows.Forms.TextBox();
-            this.V1 = new System.Windows.Forms.DomainUpDown();
-            this.U1 = new System.Windows.Forms.DomainUpDown();
-            this.V0 = new System.Windows.Forms.DomainUpDown();
-            this.U0 = new System.Windows.Forms.DomainUpDown();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.pictureSample = new System.Windows.Forms.PictureBox();
+            this.picturePoint = new System.Windows.Forms.PictureBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_github = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.pictureSample = new System.Windows.Forms.PictureBox();
-            this.picturePoint = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -66,8 +68,10 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.V1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.U1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.V0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.U0)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -75,6 +79,8 @@
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSample)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picturePoint)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -197,14 +203,16 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.btn_SetRect);
-            this.tabPage2.Controls.Add(this.btn_rect);
-            this.tabPage2.Controls.Add(this.game_height);
-            this.tabPage2.Controls.Add(this.game_width);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.V1);
             this.tabPage2.Controls.Add(this.U1);
             this.tabPage2.Controls.Add(this.V0);
             this.tabPage2.Controls.Add(this.U0);
+            this.tabPage2.Controls.Add(this.btn_SetRect);
+            this.tabPage2.Controls.Add(this.btn_rect);
+            this.tabPage2.Controls.Add(this.game_height);
+            this.tabPage2.Controls.Add(this.game_width);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -213,9 +221,41 @@
             this.tabPage2.Text = "校准";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // V1
+            // 
+            this.V1.Location = new System.Drawing.Point(119, 118);
+            this.V1.Name = "V1";
+            this.V1.Size = new System.Drawing.Size(61, 25);
+            this.V1.TabIndex = 10;
+            this.V1.ValueChanged += new System.EventHandler(this.V1_ValueChanged);
+            // 
+            // U1
+            // 
+            this.U1.Location = new System.Drawing.Point(27, 118);
+            this.U1.Name = "U1";
+            this.U1.Size = new System.Drawing.Size(61, 25);
+            this.U1.TabIndex = 9;
+            this.U1.ValueChanged += new System.EventHandler(this.U1_ValueChanged);
+            // 
+            // V0
+            // 
+            this.V0.Location = new System.Drawing.Point(119, 50);
+            this.V0.Name = "V0";
+            this.V0.Size = new System.Drawing.Size(61, 25);
+            this.V0.TabIndex = 8;
+            this.V0.ValueChanged += new System.EventHandler(this.V0_ValueChanged);
+            // 
+            // U0
+            // 
+            this.U0.Location = new System.Drawing.Point(27, 50);
+            this.U0.Name = "U0";
+            this.U0.Size = new System.Drawing.Size(61, 25);
+            this.U0.TabIndex = 7;
+            this.U0.ValueChanged += new System.EventHandler(this.U0_ValueChanged);
+            // 
             // btn_SetRect
             // 
-            this.btn_SetRect.Location = new System.Drawing.Point(219, 167);
+            this.btn_SetRect.Location = new System.Drawing.Point(233, 118);
             this.btn_SetRect.Name = "btn_SetRect";
             this.btn_SetRect.Size = new System.Drawing.Size(114, 34);
             this.btn_SetRect.TabIndex = 7;
@@ -225,7 +265,7 @@
             // 
             // btn_rect
             // 
-            this.btn_rect.Location = new System.Drawing.Point(219, 118);
+            this.btn_rect.Location = new System.Drawing.Point(233, 69);
             this.btn_rect.Name = "btn_rect";
             this.btn_rect.Size = new System.Drawing.Size(114, 40);
             this.btn_rect.TabIndex = 6;
@@ -235,9 +275,9 @@
             // 
             // game_height
             // 
-            this.game_height.Location = new System.Drawing.Point(233, 75);
+            this.game_height.Location = new System.Drawing.Point(294, 33);
             this.game_height.Name = "game_height";
-            this.game_height.Size = new System.Drawing.Size(100, 25);
+            this.game_height.Size = new System.Drawing.Size(57, 25);
             this.game_height.TabIndex = 5;
             this.game_height.Text = "1080";
             // 
@@ -245,45 +285,57 @@
             // 
             this.game_width.Location = new System.Drawing.Point(233, 33);
             this.game_width.Name = "game_width";
-            this.game_width.Size = new System.Drawing.Size(100, 25);
+            this.game_width.Size = new System.Drawing.Size(55, 25);
             this.game_width.TabIndex = 4;
             this.game_width.Text = "1920";
             // 
-            // V1
+            // tabPage3
             // 
-            this.V1.Location = new System.Drawing.Point(42, 166);
-            this.V1.Name = "V1";
-            this.V1.Size = new System.Drawing.Size(120, 25);
-            this.V1.TabIndex = 3;
-            this.V1.Text = "domainUpDown1";
-            this.V1.TextChanged += new System.EventHandler(this.TextChanged);
+            this.tabPage3.Controls.Add(this.splitContainer2);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(390, 221);
+            this.tabPage3.TabIndex = 3;
+            this.tabPage3.Text = "采集测试";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // U1
+            // splitContainer2
             // 
-            this.U1.Location = new System.Drawing.Point(42, 118);
-            this.U1.Name = "U1";
-            this.U1.Size = new System.Drawing.Size(120, 25);
-            this.U1.TabIndex = 2;
-            this.U1.Text = "domainUpDown1";
-            this.U1.TextChanged += new System.EventHandler(this.TextChanged);
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // V0
+            // splitContainer2.Panel1
             // 
-            this.V0.Location = new System.Drawing.Point(42, 75);
-            this.V0.Name = "V0";
-            this.V0.Size = new System.Drawing.Size(120, 25);
-            this.V0.TabIndex = 1;
-            this.V0.Text = "domainUpDown1";
-            this.V0.TextChanged += new System.EventHandler(this.TextChanged);
+            this.splitContainer2.Panel1.Controls.Add(this.pictureSample);
             // 
-            // U0
+            // splitContainer2.Panel2
             // 
-            this.U0.Location = new System.Drawing.Point(42, 33);
-            this.U0.Name = "U0";
-            this.U0.Size = new System.Drawing.Size(120, 25);
-            this.U0.TabIndex = 0;
-            this.U0.Text = "domainUpDown1";
-            this.U0.TextChanged += new System.EventHandler(this.TextChanged);
+            this.splitContainer2.Panel2.Controls.Add(this.picturePoint);
+            this.splitContainer2.Size = new System.Drawing.Size(390, 221);
+            this.splitContainer2.SplitterDistance = 130;
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // pictureSample
+            // 
+            this.pictureSample.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureSample.Location = new System.Drawing.Point(0, 0);
+            this.pictureSample.Name = "pictureSample";
+            this.pictureSample.Size = new System.Drawing.Size(390, 130);
+            this.pictureSample.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureSample.TabIndex = 0;
+            this.pictureSample.TabStop = false;
+            // 
+            // picturePoint
+            // 
+            this.picturePoint.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picturePoint.Location = new System.Drawing.Point(0, 0);
+            this.picturePoint.Name = "picturePoint";
+            this.picturePoint.Size = new System.Drawing.Size(390, 87);
+            this.picturePoint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picturePoint.TabIndex = 1;
+            this.picturePoint.TabStop = false;
             // 
             // tabPage4
             // 
@@ -340,53 +392,23 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // tabPage3
+            // label2
             // 
-            this.tabPage3.Controls.Add(this.splitContainer2);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(390, 221);
-            this.tabPage3.TabIndex = 3;
-            this.tabPage3.Text = "采集测试";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(31, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 15);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "缩放";
             // 
-            // splitContainer2
+            // label3
             // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.pictureSample);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.picturePoint);
-            this.splitContainer2.Size = new System.Drawing.Size(390, 221);
-            this.splitContainer2.SplitterDistance = 130;
-            this.splitContainer2.TabIndex = 0;
-            // 
-            // pictureSample
-            // 
-            this.pictureSample.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureSample.Location = new System.Drawing.Point(0, 0);
-            this.pictureSample.Name = "pictureSample";
-            this.pictureSample.Size = new System.Drawing.Size(390, 130);
-            this.pictureSample.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureSample.TabIndex = 0;
-            this.pictureSample.TabStop = false;
-            // 
-            // picturePoint
-            // 
-            this.picturePoint.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picturePoint.Location = new System.Drawing.Point(0, 0);
-            this.picturePoint.Name = "picturePoint";
-            this.picturePoint.Size = new System.Drawing.Size(390, 87);
-            this.picturePoint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picturePoint.TabIndex = 1;
-            this.picturePoint.TabStop = false;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(27, 82);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 15);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "偏移";
             // 
             // Form1
             // 
@@ -404,9 +426,10 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.V1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.U1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.V0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.U0)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -414,6 +437,9 @@
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureSample)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picturePoint)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -437,10 +463,6 @@
         private System.Windows.Forms.Button btn_github;
         private System.Windows.Forms.TextBox game_height;
         private System.Windows.Forms.TextBox game_width;
-        private System.Windows.Forms.DomainUpDown V1;
-        private System.Windows.Forms.DomainUpDown U1;
-        private System.Windows.Forms.DomainUpDown V0;
-        private System.Windows.Forms.DomainUpDown U0;
         private System.Windows.Forms.Button btn_rect;
         private System.Windows.Forms.Button btn_SetRect;
         private System.Windows.Forms.Timer timer1;
@@ -448,6 +470,12 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.PictureBox pictureSample;
         private System.Windows.Forms.PictureBox picturePoint;
+        private System.Windows.Forms.NumericUpDown U0;
+        private System.Windows.Forms.NumericUpDown V1;
+        private System.Windows.Forms.NumericUpDown U1;
+        private System.Windows.Forms.NumericUpDown V0;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
 

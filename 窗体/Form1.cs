@@ -99,15 +99,45 @@ namespace 原神地图辅助器
             picturePoint.Image = DataInfo.dealMap;
 
         }
+        private void V0_ValueChanged(object sender, EventArgs e)
+        {
+            File.WriteAllLines("config/bias.txt", new string[]
+            {
+                 U0.Text,
+                ((NumericUpDown)sender).Value.ToString() ,
+                U1.Text ,
+                V1.Text ,
+            });
+        }
+        private void U0_ValueChanged(object sender, EventArgs e)
+        {
+            File.WriteAllLines("config/bias.txt", new string[]
+            {
+                ((NumericUpDown)sender).Value.ToString(),
+                V0.Text ,
+                U1.Text ,
+                V1.Text ,
+            });
+        }
+        private void U1_ValueChanged(object sender, EventArgs e)
+        {
+            File.WriteAllLines("config/bias.txt", new string[]
+            {
+                U0.Text ,
+                V0.Text ,
+                ((NumericUpDown)sender).Value.ToString() ,
+                V1.Text ,
+            });
+        }
 
-        private void TextChanged(object sender, EventArgs e)
+        private void V1_ValueChanged(object sender, EventArgs e)
         {
             File.WriteAllLines("config/bias.txt", new string[]
             {
                 U0.Text ,
                 V0.Text ,
                 U1.Text ,
-                V1.Text ,
+                ((NumericUpDown)sender).Value.ToString() ,
             });
         }
     }

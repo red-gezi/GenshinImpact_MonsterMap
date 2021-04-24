@@ -21,7 +21,6 @@ class KeyBoardListenerr
             {
                 //代码
 
-                //Console.WriteLine($"{status} 虚拟码{(char)data.vkCode}");
                 string key = (isCtrlDown ? "Ctrl" : "" )+ (((char)data.vkCode).ToString().ToUpper());
                 response(key);
             }
