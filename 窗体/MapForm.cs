@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static 原神地图辅助器.DataInfo;
-using static 原神地图辅助器.Unitility;
+//using static 原神地图辅助器.Unitility;
 namespace 原神地图辅助器
 {
     public partial class MapForm : Form
@@ -17,12 +13,12 @@ namespace 原神地图辅助器
         public MapForm()
         {
             InitializeComponent();
-            //SetProcessDPIAware();
+            Unitility.SetProcessDPIAware();
         }
 
         static Process process = Process.GetProcessesByName("YuanShen")[0];
         IntPtr mainHandle = process.MainWindowHandle;
-        IntPtr hDeskTop = FindWindow("Progman ", "Program   Manager ");
+        IntPtr hDeskTop = Unitility.FindWindow("Progman ", "Program   Manager ");
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -30,18 +26,18 @@ namespace 原神地图辅助器
             {
                 //SetProcessDPIAware();
                 Rectangle GameRect = new Rectangle();
-                GetWindowRect(mainHandle, ref GameRect);
+                Unitility.GetWindowRect(mainHandle, ref GameRect);
                 //Size = new Size(GameRect.Right - GameRect.Left, GameRect.Bottom - GameRect.Top);
                 Size = new Size(DataInfo.width, DataInfo.height);
                 this.Location = new Point(GameRect.Left, GameRect.Top);
                 Console.WriteLine(Size);
-                gameMap = GetScreenshot(mainHandle);
+                gameMap = Unitility.GetScreenshot(mainHandle);
                 gameMap.Save("sample.png");
                 int scale1 = 1;
                 int scale2 = 5;
                 Bitmap imgSrc = (Bitmap)mainMap.GetThumbnailImage(mainMap.Width / scale1, mainMap.Height / scale1, null, IntPtr.Zero);
                 Bitmap imgSub = (Bitmap)gameMap.GetThumbnailImage(gameMap.Width / scale2, gameMap.Height / scale2, null, IntPtr.Zero);
-                var targetRect = MatchPicBySift(imgSrc, imgSub);
+                var targetRect = Unitility.MatchPicBySurf(imgSrc, imgSub);
 
                 var activePos = DataInfo.GetAllPos
                     .Where(pos => DataInfo.selectTags.Contains(pos.name)).ToList();
@@ -70,12 +66,12 @@ namespace 原神地图辅助器
             {
 
             }
-           
+
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            //SetParent(this.Handle, hDeskTop);
+            Unitility.SetParent(this.Handle, hDeskTop);
         }
     }
 }

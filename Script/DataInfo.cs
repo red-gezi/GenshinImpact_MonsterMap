@@ -1,21 +1,19 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace 原神地图辅助器
 {
     class DataInfo
     {
-        public static Bitmap mainMap = (Bitmap)Image.FromFile("MainMap.jpg");
-        public static Bitmap subMap = (Bitmap)Image.FromFile("sub.jpg");
+        public static Bitmap mainMap = (Bitmap)Image.FromFile("img/MainMap.jpg");
+        public static Bitmap transparentMap = (Bitmap)Image.FromFile("img/transparent.png");
+        //public static Bitmap subMap = (Bitmap)Image.FromFile("sub.jpg");
         public static Bitmap gameMap;
-        public static Bitmap transparentMap = (Bitmap)Image.FromFile("transparent.png");
+        public static Bitmap dealMap;
         public static float scaleX;
         public static float scaleY;
 

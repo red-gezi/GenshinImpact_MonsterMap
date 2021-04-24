@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using OpenCvSharp;
-using OpenCvSharp.Extensions;
 using static 原神地图辅助器.Unitility;
 
 namespace 原神地图辅助器
@@ -101,6 +95,9 @@ namespace 原神地图辅助器
             {
                 DataInfo.selectTags.Add(item.ToString());
             };
+            pictureSample.Image = DataInfo.gameMap;
+            picturePoint.Image = DataInfo.dealMap;
+
         }
 
         private void TextChanged(object sender, EventArgs e)
