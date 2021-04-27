@@ -72,6 +72,7 @@
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.SystemColors.Control;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 

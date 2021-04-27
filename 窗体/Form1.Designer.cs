@@ -41,6 +41,8 @@
             this.btn_Open = new System.Windows.Forms.Button();
             this.btn_Close = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.V1 = new System.Windows.Forms.NumericUpDown();
             this.U1 = new System.Windows.Forms.NumericUpDown();
             this.V0 = new System.Windows.Forms.NumericUpDown();
@@ -59,8 +61,6 @@
             this.btn_github = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -221,9 +221,37 @@
             this.tabPage2.Text = "校准";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(27, 82);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 15);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "偏移";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(31, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 15);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "缩放";
+            // 
             // V1
             // 
             this.V1.Location = new System.Drawing.Point(119, 118);
+            this.V1.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.V1.Minimum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            -2147483648});
             this.V1.Name = "V1";
             this.V1.Size = new System.Drawing.Size(61, 25);
             this.V1.TabIndex = 10;
@@ -232,6 +260,16 @@
             // U1
             // 
             this.U1.Location = new System.Drawing.Point(27, 118);
+            this.U1.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.U1.Minimum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            -2147483648});
             this.U1.Name = "U1";
             this.U1.Size = new System.Drawing.Size(61, 25);
             this.U1.TabIndex = 9;
@@ -240,6 +278,16 @@
             // V0
             // 
             this.V0.Location = new System.Drawing.Point(119, 50);
+            this.V0.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.V0.Minimum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            -2147483648});
             this.V0.Name = "V0";
             this.V0.Size = new System.Drawing.Size(61, 25);
             this.V0.TabIndex = 8;
@@ -248,6 +296,16 @@
             // U0
             // 
             this.U0.Location = new System.Drawing.Point(27, 50);
+            this.U0.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.U0.Minimum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            -2147483648});
             this.U0.Name = "U0";
             this.U0.Size = new System.Drawing.Size(61, 25);
             this.U0.TabIndex = 7;
@@ -304,7 +362,6 @@
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer2.Panel1
             // 
@@ -322,7 +379,7 @@
             this.pictureSample.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureSample.Location = new System.Drawing.Point(0, 0);
             this.pictureSample.Name = "pictureSample";
-            this.pictureSample.Size = new System.Drawing.Size(390, 130);
+            this.pictureSample.Size = new System.Drawing.Size(130, 221);
             this.pictureSample.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureSample.TabIndex = 0;
             this.pictureSample.TabStop = false;
@@ -332,7 +389,7 @@
             this.picturePoint.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picturePoint.Location = new System.Drawing.Point(0, 0);
             this.picturePoint.Name = "picturePoint";
-            this.picturePoint.Size = new System.Drawing.Size(390, 87);
+            this.picturePoint.Size = new System.Drawing.Size(256, 221);
             this.picturePoint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picturePoint.TabIndex = 1;
             this.picturePoint.TabStop = false;
@@ -391,24 +448,6 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 15);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "缩放";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(27, 82);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 15);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "偏移";
             // 
             // Form1
             // 

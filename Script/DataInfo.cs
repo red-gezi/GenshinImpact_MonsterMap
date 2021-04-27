@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace 原神地图辅助器
 {
@@ -13,11 +14,15 @@ namespace 原神地图辅助器
         public static Bitmap transparentMap = (Bitmap)Image.FromFile("img/transparent.png");
         public static Bitmap gameMap;
         public static Bitmap dealMap;
+        public static PictureBox sampleImage;//来自游戏的采样截图
+        public static PictureBox pointImage;//特征点对比截图
         public static float scaleX;
         public static float scaleY;
 
         public static int width = 1920;
         public static int height = 1080;
+
+        public static bool isClose = false;
 
         public static List<string> selectTags = new List<string>();
 

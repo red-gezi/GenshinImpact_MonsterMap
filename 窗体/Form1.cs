@@ -16,6 +16,7 @@ namespace 原神地图辅助器
         public Form1()
         {
             InitializeComponent();
+            Unitility.SetProcessDPIAware();
             DataInfo.LoadData();
             KeyBoardListenerr.GetKeyDownEvent((key) =>
             {
@@ -30,11 +31,13 @@ namespace 原神地图辅助器
                         btn_Open_Click(null, null);
                     }
                 }
-                //if (key == "ESC") btn_Close_Click(null, null);
+                //按下esc则退出
+                if (key == "←") btn_Close_Click(null, null);
             });
             var items = DataInfo.GetAllPos.Select(icon => icon.name).Distinct().ToArray();
             checkedListBox1.Items.AddRange(items);
-
+            DataInfo.sampleImage = pictureSample;
+            DataInfo.pointImage = picturePoint;
             //控制地图校准系数
             string[] configs = File.ReadAllLines("config/bias.txt");
             U0.Text = configs[0];
@@ -53,16 +56,12 @@ namespace 原神地图辅助器
         {
             if (mapForm != null)
             {
+                DataInfo.isClose = true;
                 mapForm.Close();
+                mapForm = null;
                 isMapFormOpen = false;
             }
         }
-
-        private void checkedListBox1_SelectedValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn__Boss_Click(object sender, EventArgs e) => Enumerable.Range(0, 8).ToList().ForEach(num => checkedListBox1.SetItemChecked(num, true));
         private void btnMonster_Click(object sender, EventArgs e) => Enumerable.Range(8, 15).ToList().ForEach(num => checkedListBox1.SetItemChecked(num, true));
         private void btn_collection_Click(object sender, EventArgs e) => Enumerable.Range(22, 19).ToList().ForEach(num => checkedListBox1.SetItemChecked(num, true));
@@ -95,50 +94,10 @@ namespace 原神地图辅助器
             {
                 DataInfo.selectTags.Add(item.ToString());
             };
-            pictureSample.Image = DataInfo.gameMap;
-            picturePoint.Image = DataInfo.dealMap;
-
         }
-        private void V0_ValueChanged(object sender, EventArgs e)
-        {
-            File.WriteAllLines("config/bias.txt", new string[]
-            {
-                 U0.Text,
-                ((NumericUpDown)sender).Value.ToString() ,
-                U1.Text ,
-                V1.Text ,
-            });
-        }
-        private void U0_ValueChanged(object sender, EventArgs e)
-        {
-            File.WriteAllLines("config/bias.txt", new string[]
-            {
-                ((NumericUpDown)sender).Value.ToString(),
-                V0.Text ,
-                U1.Text ,
-                V1.Text ,
-            });
-        }
-        private void U1_ValueChanged(object sender, EventArgs e)
-        {
-            File.WriteAllLines("config/bias.txt", new string[]
-            {
-                U0.Text ,
-                V0.Text ,
-                ((NumericUpDown)sender).Value.ToString() ,
-                V1.Text ,
-            });
-        }
-
-        private void V1_ValueChanged(object sender, EventArgs e)
-        {
-            File.WriteAllLines("config/bias.txt", new string[]
-            {
-                U0.Text ,
-                V0.Text ,
-                U1.Text ,
-                ((NumericUpDown)sender).Value.ToString() ,
-            });
-        }
+        private void V0_ValueChanged(object sender, EventArgs e) => File.WriteAllLines("config/bias.txt", new string[] { U0.Text, ((NumericUpDown)sender).Value.ToString(), U1.Text, V1.Text, });
+        private void U0_ValueChanged(object sender, EventArgs e) => File.WriteAllLines("config/bias.txt", new string[] { ((NumericUpDown)sender).Value.ToString(), V0.Text, U1.Text, V1.Text, });
+        private void U1_ValueChanged(object sender, EventArgs e) => File.WriteAllLines("config/bias.txt", new string[] { U0.Text, V0.Text, ((NumericUpDown)sender).Value.ToString(), V1.Text, });
+        private void V1_ValueChanged(object sender, EventArgs e) => File.WriteAllLines("config/bias.txt", new string[] { U0.Text, V0.Text, U1.Text, ((NumericUpDown)sender).Value.ToString(), });
     }
 }
