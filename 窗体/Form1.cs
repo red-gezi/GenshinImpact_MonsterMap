@@ -5,7 +5,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using static 原神地图辅助器.Unitility;
 
 namespace 原神地图辅助器
 {
@@ -31,7 +30,7 @@ namespace 原神地图辅助器
                         btn_Open_Click(null, null);
                     }
                 }
-                //按下esc则退出
+                //按下esc则退出(别问我为啥esc是←)
                 if (key == "←") btn_Close_Click(null, null);
             });
             var items = DataInfo.GetAllPos.Select(icon => icon.name).Distinct().ToArray();
@@ -47,16 +46,22 @@ namespace 原神地图辅助器
         }
         private void btn_Open_Click(object sender, EventArgs e)
         {
-            mapForm = new MapForm();
-            mapForm.Show();
-            isMapFormOpen = true;
+            if (DataInfo.YuanshenProcess != null || DataInfo.isUseFakePicture)
+            {
+                mapForm = new MapForm();
+                mapForm.Show();
+                isMapFormOpen = true;
+            }
+            else
+            {
+                MessageBox.Show("请先打开游戏");
+            }
         }
-
         private void btn_Close_Click(object sender, EventArgs e)
         {
             if (mapForm != null)
             {
-                DataInfo.isClose = true;
+                DataInfo.isMapFormClose = true;
                 mapForm.Close();
                 mapForm = null;
                 isMapFormOpen = false;
@@ -68,25 +73,28 @@ namespace 原神地图辅助器
         private void btn_All_Click(object sender, EventArgs e) => Enumerable.Range(0, checkedListBox1.Items.Count).ToList().ForEach(num => checkedListBox1.SetItemChecked(num, true));
         private void btn_None_Click(object sender, EventArgs e) => Enumerable.Range(0, checkedListBox1.Items.Count).ToList().ForEach(num => checkedListBox1.SetItemChecked(num, false));
         private void btn_github_Click(object sender, EventArgs e) => Process.Start("https://github.com/red-gezi/GenshinImpact_MonsterMap");
-
         private void btn_rect_Click(object sender, EventArgs e)
         {
-            Process process = Process.GetProcessesByName("YuanShen")[0];
-            IntPtr mainHandle = process.MainWindowHandle;
-            Rectangle GameRect = new Rectangle();
-            GetWindowRect(mainHandle, ref GameRect);
-            game_width.Text = GameRect.Width + "";
-            DataInfo.width = GameRect.Width;
-            game_height.Text = GameRect.Height + "";
-            DataInfo.height = GameRect.Height;
+            if (DataInfo.YuanshenProcess != null)
+            {
+                IntPtr mainHandle = DataInfo.YuanshenProcess.MainWindowHandle;
+                Rectangle GameRect = new Rectangle();
+                Unitility.GetWindowRect(mainHandle, ref GameRect);
+                game_width.Text = GameRect.Width + "";
+                DataInfo.width = GameRect.Width;
+                game_height.Text = GameRect.Height + "";
+                DataInfo.height = GameRect.Height;
+            }
+            else
+            {
+                MessageBox.Show("请先打开游戏");
+            }
         }
-
         private void btn_SetRect_Click(object sender, EventArgs e)
         {
             DataInfo.width = int.Parse(game_width.Text);
             DataInfo.height = int.Parse(game_height.Text);
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             DataInfo.selectTags.Clear();

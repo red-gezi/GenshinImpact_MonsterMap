@@ -150,6 +150,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Script\InfoModel.cs" />
+    <Compile Include="Script\Timer.cs" />
     <Compile Include="窗体\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
