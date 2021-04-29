@@ -30,7 +30,7 @@ namespace 原神地图辅助器
         public static int width = 1920;
         public static int height = 1080;
         public static bool isMapFormClose = false;
-        public static bool isUseFakePicture = true;
+        public static bool isUseFakePicture = false;
         public static List<string> selectTags = new List<string>();
         public static List<InfoModel.Pos> GetAllPos { get; } = new List<InfoModel.Pos>();
         public static void LoadData()
@@ -39,6 +39,7 @@ namespace 原神地图辅助器
             DownLoadPosInfo("game=ys&ts=1619009490581&markTypes=115%2C84%2C90%2C91%2C92%2C93%2C94%2C101%2C102%2C103%2C109%2C110%2C111%2C176%2C178%2C&sign=3c7c722f986faf9f1b8babcebd261070");
             DownLoadPosInfo("game=ys&ts=1619192690124&markTypes=15%2C17%2C18%2C29%2C32%2C37%2C41%2C51%2C180%2C&sign=efca01169d0c6326851ee09d19bb9432");
             DownLoadPosInfo("game=ys&ts=1619103048545&markTypes=24%2C27%2C28%2C33%2C40%2C42%2C53%2C54%2C83%2C181%2C&sign=dfd5178594302b315745b628c261d322");
+            DownLoadPosInfo("game=ys&ts=1619694104528&markTypes=2%2C9%2C76%2C81%2C112%2C&sign=a7f4e42d2c0eafb92704ba76d0d48e29");
             new DirectoryInfo("icon").GetFiles().ToList().ForEach(icon => { iconDict[icon.Name] = (Bitmap)Image.FromFile(icon.FullName); });
         }
         private static void DownLoadPosInfo(string cookie)

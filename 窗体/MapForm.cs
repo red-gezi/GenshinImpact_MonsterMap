@@ -13,12 +13,13 @@ namespace 原神地图辅助器
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Console.WriteLine(Handle+"-"+ DataInfo.hDeskTop);
-            Unitility.SetParent(Handle, DataInfo.hDeskTop);//循环置顶
+            //Console.WriteLine(Handle+"-"+ DataInfo.hDeskTop);
+           // Unitility.SetParent(Handle, DataInfo.hDeskTop);//循环置顶
         }
 
         public MapForm()
         {
+            Unitility.SetParent(Handle, DataInfo.hDeskTop);
             //graphBuffer = (new BufferedGraphicsContext()).Allocate(MapForm_Paint.CreateGraphics(), Paint.DisplayRectangle);
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             InitializeComponent();
@@ -47,7 +48,7 @@ namespace 原神地图辅助器
                         int scaleSub = 2;
                         Bitmap imgSrc = (Bitmap)DataInfo.mainMap.GetThumbnailImage(DataInfo.mainMap.Width / scaleSrc, DataInfo.mainMap.Height / scaleSrc, null, IntPtr.Zero);
                         Bitmap imgSub = (Bitmap)DataInfo.gameMap.GetThumbnailImage(DataInfo.gameMap.Width / scaleSub, DataInfo.gameMap.Height / scaleSub, null, IntPtr.Zero);
-                        var targetRect = Unitility.MatchMap(imgSrc, imgSub, false, out Image outImage);
+                        var targetRect = Unitility.MatchMap(imgSrc, imgSub, true, out Image outImage);
                         imgSrc.Dispose();
                         imgSub.Dispose();
                         var activePos = DataInfo.GetAllPos.Where(pos => DataInfo.selectTags.Contains(pos.name)).ToList();
@@ -68,6 +69,7 @@ namespace 原神地图辅助器
                         DataInfo.sampleImage.Image = DataInfo.gameMap;
                         DataInfo.pointImage.Image = DataInfo.dealMap;
                         Console.WriteLine(DataInfo.gameMap.Size);
+                        if (DataInfo.isMapFormClose) break;
                         Action refreshImage = () => pictureBox1.Image = DataInfo.transparentMap;
                         Invoke(refreshImage);
                         Timer.Show("图片更新完毕");

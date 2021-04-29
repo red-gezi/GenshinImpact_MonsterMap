@@ -48,9 +48,9 @@ namespace 原神地图辅助器
         {
             if (DataInfo.YuanshenProcess != null || DataInfo.isUseFakePicture)
             {
+                isMapFormOpen = true;
                 mapForm = new MapForm();
                 mapForm.Show();
-                isMapFormOpen = true;
             }
             else
             {
