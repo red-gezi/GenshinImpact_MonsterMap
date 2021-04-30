@@ -21,6 +21,9 @@ namespace 原神地图辅助器
         [DllImport("user32 ")]
         public static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
 
+        [DllImport("user32 ")]
+        public static extern IntPtr GetParent(IntPtr hWnd);
+
         [DllImport("user32.dll")]
         internal static extern bool SetProcessDPIAware();
 

@@ -61,9 +61,10 @@ namespace 原神地图辅助器
         {
             if (mapForm != null)
             {
-                DataInfo.isMapFormClose = true;
+                mapForm.isJumpOutOfTask = true;
                 mapForm.Close();
-                mapForm = null;
+                mapForm.Dispose();
+               // mapForm = null;
                 isMapFormOpen = false;
             }
         }

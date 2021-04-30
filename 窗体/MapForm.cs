@@ -13,10 +13,17 @@ namespace 原神地图辅助器
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //Console.WriteLine(Handle+"-"+ DataInfo.hDeskTop);
-           // Unitility.SetParent(Handle, DataInfo.hDeskTop);//循环置顶
-        }
 
+            var parent = Unitility.GetParent(Handle);
+            if (parent!= DataInfo.hDeskTop)
+            {
+                Console.WriteLine("######################################################");
+                Console.WriteLine("重新置顶");
+                Console.WriteLine("######################################################");
+                Unitility.SetParent(Handle, DataInfo.hDeskTop);//循环置顶
+            }
+        }
+        public bool isJumpOutOfTask=false;
         public MapForm()
         {
             Unitility.SetParent(Handle, DataInfo.hDeskTop);
@@ -30,7 +37,7 @@ namespace 原神地图辅助器
             {
                 while (true)
                 {
-                    if (DataInfo.isMapFormClose) break;
+                    if (isJumpOutOfTask) break;
                     try
                     {
                         Rectangle GameRect = new Rectangle();
@@ -53,7 +60,7 @@ namespace 原神地图辅助器
                         imgSub.Dispose();
                         var activePos = DataInfo.GetAllPos.Where(pos => DataInfo.selectTags.Contains(pos.name)).ToList();
                         activePos = activePos.Where(pos => pos.x > targetRect.X).ToList();
-                        
+
                         g.Clear(Color.Transparent);
                         activePos.ForEach(pos =>
                         {
@@ -69,7 +76,7 @@ namespace 原神地图辅助器
                         DataInfo.sampleImage.Image = DataInfo.gameMap;
                         DataInfo.pointImage.Image = DataInfo.dealMap;
                         Console.WriteLine(DataInfo.gameMap.Size);
-                        if (DataInfo.isMapFormClose) break;
+                        if (isJumpOutOfTask) break;
                         Action refreshImage = () => pictureBox1.Image = DataInfo.transparentMap;
                         Invoke(refreshImage);
                         Timer.Show("图片更新完毕");
