@@ -16,7 +16,7 @@ namespace 原神地图辅助器
         public Form1()
         {
             InitializeComponent();
-            this.Text = "原神雷达滤镜v1.0";
+            this.Text = "原神雷达滤镜v3.0";
             Win32Api.SetProcessDPIAware();
             DataInfo.LoadData();
             InputListenerr.GetMouseEvent(() => DataInfo.isDetection = true);
@@ -91,6 +91,7 @@ namespace 原神地图辅助器
         RECT rect = new RECT();
         private void timer1_Tick(object sender, EventArgs e)
         {
+            DataInfo.isShowLine = cb_ShowLine.Checked;
             DataInfo.selectTags.Clear();
             foreach (var item in checkedListBox1.CheckedItems)
             {
@@ -105,7 +106,7 @@ namespace 原神地图辅助器
                 game_width.Text = rect.Right + "";
                 game_height.Text = rect.Bottom + "";
             }
-        }                   
+        }
 
         private void ValueChange(object sender, EventArgs e)
         {

@@ -39,6 +39,7 @@ namespace 原神地图辅助器
         public static int width = 1920;
         public static int height = 1080;
         public static bool isDetection = false;
+        public static bool isShowLine = false;
         public static bool isMapFormClose = false;
         public static bool isUseFakePicture = false;
         public static List<string> selectTags = new List<string>();
@@ -59,6 +60,7 @@ namespace 原神地图辅助器
             DownLoadPosInfo("game=ys&ts=1620198102608&markTypes=185%2C186%2C187%2C188%2C189%2C190%2C191%2C&sign=df8cc0589b0bbce76477d5326b424d81");//树木
             File.WriteAllText("config/IconPosition.txt", JsonConvert.SerializeObject(GetAllPos, Formatting.Indented));
             LoadData();
+            MessageBox.Show("更新完成");
         }
         private static void DownLoadPosInfo(string cookie)
         {

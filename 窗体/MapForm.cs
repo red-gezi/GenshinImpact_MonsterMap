@@ -84,16 +84,19 @@ namespace 原神地图辅助器
                                     }
                                 }
                             });
-                            for (int x = -100; x < 110; x += 10)
+                            if (DataInfo.isShowLine)
                             {
-                                g.DrawLine(DataInfo.whitePen, x.ToMapPosX(targetRect, Size), -100.ToMapPosY(targetRect, Size), x.ToMapPosX(targetRect, Size), 100.ToMapPosY(targetRect, Size));
+                                for (int x = -100; x < 110; x += 10)
+                                {
+                                    g.DrawLine(DataInfo.whitePen, x.ToMapPosX(targetRect, Size), -100.ToMapPosY(targetRect, Size), x.ToMapPosX(targetRect, Size), 100.ToMapPosY(targetRect, Size));
+                                }
+                                for (int y = -100; y < 110; y += 10)
+                                {
+                                    g.DrawLine(DataInfo.whitePen, -100.ToMapPosX(targetRect, Size), y.ToMapPosY(targetRect, Size), 100.ToMapPosX(targetRect, Size), y.ToMapPosY(targetRect, Size));
+                                }
+                                g.DrawLine(DataInfo.redPen, -100.ToMapPosX(targetRect, Size), 0.ToMapPosY(targetRect, Size), 100.ToMapPosX(targetRect, Size), 0.ToMapPosY(targetRect, Size));
+                                g.DrawLine(DataInfo.redPen, 0.ToMapPosX(targetRect, Size), -100.ToMapPosY(targetRect, Size), 0.ToMapPosX(targetRect, Size), 100.ToMapPosY(targetRect, Size));
                             }
-                            for (int y = -100; y < 110; y += 10)
-                            {
-                                g.DrawLine(DataInfo.whitePen, -100.ToMapPosX(targetRect, Size), y.ToMapPosY(targetRect, Size), 100.ToMapPosX(targetRect, Size), y.ToMapPosY(targetRect, Size));
-                            }
-                            g.DrawLine(DataInfo.redPen, -100.ToMapPosX(targetRect, Size), 0.ToMapPosY(targetRect, Size), 100.ToMapPosX(targetRect, Size), 0.ToMapPosY(targetRect, Size));
-                            g.DrawLine(DataInfo.redPen, 0.ToMapPosX(targetRect, Size), -100.ToMapPosY(targetRect, Size), 0.ToMapPosX(targetRect, Size), 100.ToMapPosY(targetRect, Size));
                             Console.WriteLine("坐标绘制完成");
                             DataInfo.sampleImage.Image = DataInfo.gameMap;
                             DataInfo.pointImage.Image = DataInfo.dealMap;

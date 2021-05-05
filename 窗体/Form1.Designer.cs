@@ -63,7 +63,7 @@
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btn_update = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cb_ShowLine = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -207,7 +207,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.checkBox1);
+            this.tabPage2.Controls.Add(this.cb_ShowLine);
             this.tabPage2.Controls.Add(this.cb_AutoLoadScreen);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.label2);
@@ -478,17 +478,17 @@
             this.btn_update.UseVisualStyleBackColor = true;
             this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
-            // checkBox1
+            // cb_ShowLine
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(27, 169);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(104, 19);
-            this.checkBox1.TabIndex = 14;
-            this.checkBox1.Text = "显示经纬线";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cb_ShowLine.AutoSize = true;
+            this.cb_ShowLine.Checked = true;
+            this.cb_ShowLine.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_ShowLine.Location = new System.Drawing.Point(27, 169);
+            this.cb_ShowLine.Name = "cb_ShowLine";
+            this.cb_ShowLine.Size = new System.Drawing.Size(104, 19);
+            this.cb_ShowLine.TabIndex = 14;
+            this.cb_ShowLine.Text = "显示经纬线";
+            this.cb_ShowLine.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -558,7 +558,7 @@
         private System.Windows.Forms.CheckBox cb_AutoLoadScreen;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_update;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cb_ShowLine;
     }
 }
 
