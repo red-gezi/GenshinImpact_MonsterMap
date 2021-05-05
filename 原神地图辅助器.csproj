@@ -159,6 +159,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Script\Extension.cs" />
+    <Compile Include="Script\ImageUnitility.cs" />
     <Compile Include="Script\InfoModel.cs" />
     <Compile Include="Script\Timer.cs" />
     <Compile Include="窗体\Form1.cs">
@@ -167,7 +169,7 @@
     <Compile Include="窗体\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Script\KeyBoardListenerr.cs" />
+    <Compile Include="Script\InputListenerr.cs" />
     <Compile Include="窗体\MapForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,7 +179,7 @@
     <Compile Include="Script\DataInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Script\Unitility.cs" />
+    <Compile Include="Script\Win32Api.cs" />
     <EmbeddedResource Include="窗体\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

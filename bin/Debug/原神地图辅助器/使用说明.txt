@@ -1,0 +1,7 @@
+1：右键原神快捷方式，点属性，在目标后面加上启动指令 -popupwindow
+举例
+若原本："X:\Genshin Impact\launcher.exe"
+则改为："X:\Genshin Impact\launcher.exe" -popupwindow
+2:启动程序
+3:选择标签
+4:进入游戏，按m打开小地图，再按m或esc关闭（比较占用cpu，不用的时候请关闭）

@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace 原神地图辅助器
 {
+    /// <summary>
+    /// 线上地图检测类
+    /// </summary>
     class DataInfo
     {
         public static Dictionary<string, Bitmap> iconDict = new Dictionary<string, Bitmap>();
@@ -20,27 +23,42 @@ namespace 原神地图辅助器
         public static Bitmap dealMap;
         public static PictureBox sampleImage;//来自游戏的采样截图
         public static PictureBox pointImage;//特征点对比截图
-        public static float scaleX;
-        public static float scaleY;
+        public static Pen redPen = new Pen(new SolidBrush(Color.Red));
+        public static Pen whitePen = new Pen(new SolidBrush(Color.White));
+        //校准
+        public static float PixelPerIng = 0;
+        public static float PixelPerLat = 0;
+        public static float IngBias = 0;
+        public static float LatBias = 0;
+
         static Process[] gameProcess => Process.GetProcessesByName(isUseFakePicture ? "NotePad" : "YuanShen");
         public static Process YuanshenProcess => gameProcess.Any() ? gameProcess[0] : null;
         public static IntPtr mainHandle => YuanshenProcess.MainWindowHandle;
-        public static IntPtr hDeskTop = Unitility.FindWindow("Progman ", "Program   Manager ");
+        public static IntPtr hDeskTop = Win32Api.FindWindow("Progman ", "Program   Manager ");
 
         public static int width = 1920;
         public static int height = 1080;
+        public static bool isDetection = false;
         public static bool isMapFormClose = false;
         public static bool isUseFakePicture = false;
         public static List<string> selectTags = new List<string>();
-        public static List<InfoModel.Pos> GetAllPos { get; } = new List<InfoModel.Pos>();
+        public static List<InfoModel.Pos> GetAllPos { get; set; } = new List<InfoModel.Pos>();
         public static void LoadData()
         {
+            GetAllPos = JsonConvert.DeserializeObject<List<InfoModel.Pos>>(File.ReadAllText("config/IconPosition.txt"));
+            new DirectoryInfo("icon").GetFiles().ToList().ForEach(icon => { iconDict[icon.Name] = (Bitmap)Image.FromFile(icon.FullName); });
+        }
+        public static void UpadteData()
+        {
+            GetAllPos.Clear();
             DownLoadPosInfo("game=ys&ts=1618932203814&markTypes=87%2C88%2C89%2C105%2C106%2C107%2C108%2C175%2C&sign=5b69e10fcad70f825783527cbd6d0e1c");
             DownLoadPosInfo("game=ys&ts=1619009490581&markTypes=115%2C84%2C90%2C91%2C92%2C93%2C94%2C101%2C102%2C103%2C109%2C110%2C111%2C176%2C178%2C&sign=3c7c722f986faf9f1b8babcebd261070");
             DownLoadPosInfo("game=ys&ts=1619192690124&markTypes=15%2C17%2C18%2C29%2C32%2C37%2C41%2C51%2C180%2C&sign=efca01169d0c6326851ee09d19bb9432");
             DownLoadPosInfo("game=ys&ts=1619103048545&markTypes=24%2C27%2C28%2C33%2C40%2C42%2C53%2C54%2C83%2C181%2C&sign=dfd5178594302b315745b628c261d322");
-            DownLoadPosInfo("game=ys&ts=1619694104528&markTypes=2%2C9%2C76%2C81%2C112%2C&sign=a7f4e42d2c0eafb92704ba76d0d48e29");
-            new DirectoryInfo("icon").GetFiles().ToList().ForEach(icon => { iconDict[icon.Name] = (Bitmap)Image.FromFile(icon.FullName); });
+            DownLoadPosInfo("game=ys&ts=1619694104528&markTypes=2%2C9%2C76%2C81%2C112%2C&sign=a7f4e42d2c0eafb92704ba76d0d48e29");//神瞳
+            DownLoadPosInfo("game=ys&ts=1620198102608&markTypes=185%2C186%2C187%2C188%2C189%2C190%2C191%2C&sign=df8cc0589b0bbce76477d5326b424d81");//树木
+            File.WriteAllText("config/IconPosition.txt", JsonConvert.SerializeObject(GetAllPos, Formatting.Indented));
+            LoadData();
         }
         private static void DownLoadPosInfo(string cookie)
         {

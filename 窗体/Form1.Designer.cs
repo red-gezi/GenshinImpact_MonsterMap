@@ -41,6 +41,7 @@
             this.btn_Open = new System.Windows.Forms.Button();
             this.btn_Close = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cb_AutoLoadScreen = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.V1 = new System.Windows.Forms.NumericUpDown();
@@ -48,7 +49,6 @@
             this.V0 = new System.Windows.Forms.NumericUpDown();
             this.U0 = new System.Windows.Forms.NumericUpDown();
             this.btn_SetRect = new System.Windows.Forms.Button();
-            this.btn_rect = new System.Windows.Forms.Button();
             this.game_height = new System.Windows.Forms.TextBox();
             this.game_width = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -56,11 +56,14 @@
             this.pictureSample = new System.Windows.Forms.PictureBox();
             this.picturePoint = new System.Windows.Forms.PictureBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_github = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btn_update = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -116,6 +119,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btn_update);
             this.tabPage1.Controls.Add(this.btn_None);
             this.tabPage1.Controls.Add(this.btn_All);
             this.tabPage1.Controls.Add(this.btn__Boss);
@@ -203,6 +207,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.checkBox1);
+            this.tabPage2.Controls.Add(this.cb_AutoLoadScreen);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.V1);
@@ -210,7 +216,6 @@
             this.tabPage2.Controls.Add(this.V0);
             this.tabPage2.Controls.Add(this.U0);
             this.tabPage2.Controls.Add(this.btn_SetRect);
-            this.tabPage2.Controls.Add(this.btn_rect);
             this.tabPage2.Controls.Add(this.game_height);
             this.tabPage2.Controls.Add(this.game_width);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
@@ -220,6 +225,18 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "校准";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // cb_AutoLoadScreen
+            // 
+            this.cb_AutoLoadScreen.AutoSize = true;
+            this.cb_AutoLoadScreen.Checked = true;
+            this.cb_AutoLoadScreen.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_AutoLoadScreen.Location = new System.Drawing.Point(233, 78);
+            this.cb_AutoLoadScreen.Name = "cb_AutoLoadScreen";
+            this.cb_AutoLoadScreen.Size = new System.Drawing.Size(134, 19);
+            this.cb_AutoLoadScreen.TabIndex = 13;
+            this.cb_AutoLoadScreen.Text = "自动读取分辨率";
+            this.cb_AutoLoadScreen.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -255,7 +272,7 @@
             this.V1.Name = "V1";
             this.V1.Size = new System.Drawing.Size(61, 25);
             this.V1.TabIndex = 10;
-            this.V1.ValueChanged += new System.EventHandler(this.V1_ValueChanged);
+            this.V1.ValueChanged += new System.EventHandler(this.ValueChange);
             // 
             // U1
             // 
@@ -273,7 +290,7 @@
             this.U1.Name = "U1";
             this.U1.Size = new System.Drawing.Size(61, 25);
             this.U1.TabIndex = 9;
-            this.U1.ValueChanged += new System.EventHandler(this.U1_ValueChanged);
+            this.U1.ValueChanged += new System.EventHandler(this.ValueChange);
             // 
             // V0
             // 
@@ -291,7 +308,7 @@
             this.V0.Name = "V0";
             this.V0.Size = new System.Drawing.Size(61, 25);
             this.V0.TabIndex = 8;
-            this.V0.ValueChanged += new System.EventHandler(this.V0_ValueChanged);
+            this.V0.ValueChanged += new System.EventHandler(this.ValueChange);
             // 
             // U0
             // 
@@ -309,7 +326,7 @@
             this.U0.Name = "U0";
             this.U0.Size = new System.Drawing.Size(61, 25);
             this.U0.TabIndex = 7;
-            this.U0.ValueChanged += new System.EventHandler(this.U0_ValueChanged);
+            this.U0.ValueChanged += new System.EventHandler(this.ValueChange);
             // 
             // btn_SetRect
             // 
@@ -317,19 +334,9 @@
             this.btn_SetRect.Name = "btn_SetRect";
             this.btn_SetRect.Size = new System.Drawing.Size(114, 34);
             this.btn_SetRect.TabIndex = 7;
-            this.btn_SetRect.Text = "提交分辨率";
+            this.btn_SetRect.Text = "手动提交分辨率";
             this.btn_SetRect.UseVisualStyleBackColor = true;
             this.btn_SetRect.Click += new System.EventHandler(this.btn_SetRect_Click);
-            // 
-            // btn_rect
-            // 
-            this.btn_rect.Location = new System.Drawing.Point(233, 69);
-            this.btn_rect.Name = "btn_rect";
-            this.btn_rect.Size = new System.Drawing.Size(114, 40);
-            this.btn_rect.TabIndex = 6;
-            this.btn_rect.Text = "读取分辨率（不一定准）";
-            this.btn_rect.UseVisualStyleBackColor = true;
-            this.btn_rect.Click += new System.EventHandler(this.btn_rect_Click);
             // 
             // game_height
             // 
@@ -396,6 +403,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.button1);
             this.tabPage4.Controls.Add(this.label1);
             this.tabPage4.Controls.Add(this.pictureBox1);
             this.tabPage4.Controls.Add(this.btn_github);
@@ -405,6 +413,16 @@
             this.tabPage4.TabIndex = 2;
             this.tabPage4.Text = "更新";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(223, 97);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(164, 53);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "访问原神Bwiki地图";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -427,9 +445,9 @@
             // 
             // btn_github
             // 
-            this.btn_github.Location = new System.Drawing.Point(223, 53);
+            this.btn_github.Location = new System.Drawing.Point(223, 23);
             this.btn_github.Name = "btn_github";
-            this.btn_github.Size = new System.Drawing.Size(164, 23);
+            this.btn_github.Size = new System.Drawing.Size(164, 53);
             this.btn_github.TabIndex = 0;
             this.btn_github.Text = "访问项目开源页面";
             this.btn_github.UseVisualStyleBackColor = true;
@@ -438,6 +456,7 @@
             // checkedListBox1
             // 
             this.checkedListBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkedListBox1.Font = new System.Drawing.Font("宋体", 12F);
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.Location = new System.Drawing.Point(0, 0);
             this.checkedListBox1.Name = "checkedListBox1";
@@ -448,6 +467,28 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // btn_update
+            // 
+            this.btn_update.Location = new System.Drawing.Point(261, 17);
+            this.btn_update.Name = "btn_update";
+            this.btn_update.Size = new System.Drawing.Size(90, 115);
+            this.btn_update.TabIndex = 11;
+            this.btn_update.Text = "联网更新新坐标数据";
+            this.btn_update.UseVisualStyleBackColor = true;
+            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(27, 169);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(104, 19);
+            this.checkBox1.TabIndex = 14;
+            this.checkBox1.Text = "显示经纬线";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -502,7 +543,6 @@
         private System.Windows.Forms.Button btn_github;
         private System.Windows.Forms.TextBox game_height;
         private System.Windows.Forms.TextBox game_width;
-        private System.Windows.Forms.Button btn_rect;
         private System.Windows.Forms.Button btn_SetRect;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TabPage tabPage3;
@@ -515,6 +555,10 @@
         private System.Windows.Forms.NumericUpDown V0;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox cb_AutoLoadScreen;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_update;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

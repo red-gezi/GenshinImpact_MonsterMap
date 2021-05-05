@@ -1,8 +1,10 @@
-﻿using System.IO;
+﻿using Newtonsoft.Json;
+using System;
+using System.IO;
 
 namespace 原神地图辅助器
 {
-    class InfoModel
+    public class InfoModel
     {
         public struct RECT
         {
@@ -11,18 +13,25 @@ namespace 原神地图辅助器
             public int Right;                           //最右坐标
             public int Bottom;                        //最下坐标
         }
+        public struct WINDOWPLACEMENT
+        {
+            public int length;
+            public int flags;
+            public int showCmd;
+            public System.Drawing.Point ptMinPosition;
+            public System.Drawing.Point ptMaxPosition;
+            public System.Drawing.Rectangle rcNormalPosition;
+        }
         public class Pos
         {
             public string name;
 
-            float lng;
-            float lat;
-            float PixelPerIng => float.Parse(File.ReadAllLines("config/bias.txt")[0]) * 0.1f;
-            float PixelPerLat => float.Parse(File.ReadAllLines("config/bias.txt")[1]) * 0.1f;
-            float IngBias => float.Parse(File.ReadAllLines("config/bias.txt")[2]);
-            float LatBias => float.Parse(File.ReadAllLines("config/bias.txt")[3]);
-            public int x => (int)(lng * PixelPerIng + IngBias);
-            public int y => (int)(lat * PixelPerLat + LatBias);
+            public float lng;
+            public float lat;
+            [JsonIgnore]
+            public int x => (int)Math.Round((lng * DataInfo.PixelPerIng * 0.1f + DataInfo.IngBias));
+            [JsonIgnore]                                               
+            public int y => (int)Math.Round((lat * DataInfo.PixelPerLat * 0.1f + DataInfo.LatBias));
 
             public Pos(string name, float lng, float lat)
             {
@@ -55,5 +64,5 @@ namespace 原神地图辅助器
             }
         }
     }
-        
+
 }
