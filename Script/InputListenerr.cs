@@ -37,13 +37,13 @@ class InputListenerr
         });
         IntPtr intPtr = SetWindowsHookEx(WindowsHookType.WH_KEYBOARD_LL, k_callback, IntPtr.Zero, 0);
     }
-    public static void GetMouseEvent(Action response)
+    public static void GetMouseEvent(Action<string> response)
     {
         m_callback = CreateCallBack((status, data) =>
         {
             if ((int)status!=512)
             {
-                response();
+                response(status.ToString());
             }
 
         });

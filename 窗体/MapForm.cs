@@ -71,32 +71,37 @@ namespace 原神地图辅助器
                             imgSub.Dispose();
                             var activePos = DataInfo.GetAllPos.Where(pos => DataInfo.selectTags.Contains(pos.name)).ToList();
                             g.Clear(Color.Transparent);
-                            activePos.ForEach(pos =>
+                            if (!DataInfo.isPauseShowIcon)
                             {
-                                int x = (int)((pos.x - targetRect.X) * (Size.Width * 1.0f / targetRect.Width));
-                                int y = (int)((pos.y - targetRect.Y) * (Size.Height * 1.0f / targetRect.Height));
-                                Bitmap icon = DataInfo.iconDict[pos.name];
-                                if ((x - icon.Width / 2) > 0 && (y - icon.Height) > 0)
+                                activePos.ForEach(pos =>
                                 {
-                                    if ((x - icon.Width / 2) < DataInfo.width && (y - icon.Height) < DataInfo.height)
+                                    int x = (int)((pos.x - targetRect.X) * (Size.Width * 1.0f / targetRect.Width));
+                                    int y = (int)((pos.y - targetRect.Y) * (Size.Height * 1.0f / targetRect.Height));
+                                    Bitmap icon = DataInfo.iconDict[pos.name];
+                                    if ((x - icon.Width / 2) > 0 && (y - icon.Height) > 0)
                                     {
-                                        g.DrawImage(DataInfo.iconDict[pos.name], new PointF(x - icon.Width / 2, y - icon.Height));
+                                        if ((x - icon.Width / 2) < DataInfo.width && (y - icon.Height) < DataInfo.height)
+                                        {
+                                            g.DrawImage(DataInfo.iconDict[pos.name], new PointF(x - icon.Width / 2, y - icon.Height));
+                                        }
                                     }
-                                }
-                            });
-                            if (DataInfo.isShowLine)
-                            {
-                                for (int x = -100; x < 110; x += 10)
+                                });
+                                if (DataInfo.isShowLine)
                                 {
-                                    g.DrawLine(DataInfo.whitePen, x.ToMapPosX(targetRect, Size), -100.ToMapPosY(targetRect, Size), x.ToMapPosX(targetRect, Size), 100.ToMapPosY(targetRect, Size));
+                                    for (int x = -100; x < 110; x += 10)
+                                    {
+                                        g.DrawLine(DataInfo.whitePen, x.ToMapPosX(targetRect, Size), -100.ToMapPosY(targetRect, Size), x.ToMapPosX(targetRect, Size), 100.ToMapPosY(targetRect, Size));
+                                    }
+                                    for (int y = -100; y < 110; y += 10)
+                                    {
+                                        g.DrawLine(DataInfo.whitePen, -100.ToMapPosX(targetRect, Size), y.ToMapPosY(targetRect, Size), 100.ToMapPosX(targetRect, Size), y.ToMapPosY(targetRect, Size));
+                                    }
+                                    g.DrawLine(DataInfo.redPen, -100.ToMapPosX(targetRect, Size), 0.ToMapPosY(targetRect, Size), 100.ToMapPosX(targetRect, Size), 0.ToMapPosY(targetRect, Size));
+                                    g.DrawLine(DataInfo.redPen, 0.ToMapPosX(targetRect, Size), -100.ToMapPosY(targetRect, Size), 0.ToMapPosX(targetRect, Size), 100.ToMapPosY(targetRect, Size));
                                 }
-                                for (int y = -100; y < 110; y += 10)
-                                {
-                                    g.DrawLine(DataInfo.whitePen, -100.ToMapPosX(targetRect, Size), y.ToMapPosY(targetRect, Size), 100.ToMapPosX(targetRect, Size), y.ToMapPosY(targetRect, Size));
-                                }
-                                g.DrawLine(DataInfo.redPen, -100.ToMapPosX(targetRect, Size), 0.ToMapPosY(targetRect, Size), 100.ToMapPosX(targetRect, Size), 0.ToMapPosY(targetRect, Size));
-                                g.DrawLine(DataInfo.redPen, 0.ToMapPosX(targetRect, Size), -100.ToMapPosY(targetRect, Size), 0.ToMapPosX(targetRect, Size), 100.ToMapPosY(targetRect, Size));
                             }
+                            
+                           
                             Console.WriteLine("坐标绘制完成");
                             DataInfo.sampleImage.Image = DataInfo.gameMap;
                             DataInfo.pointImage.Image = DataInfo.dealMap;
@@ -115,7 +120,7 @@ namespace 原神地图辅助器
                             Console.WriteLine(e.StackTrace);
                         }
                     }
-                    await Task.Delay(1000);
+                    await Task.Delay(100);
                 }
             });
 

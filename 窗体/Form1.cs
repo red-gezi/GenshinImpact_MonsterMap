@@ -19,7 +19,19 @@ namespace 原神地图辅助器
             this.Text = "原神雷达滤镜v3.0";
             Win32Api.SetProcessDPIAware();
             DataInfo.LoadData();
-            InputListenerr.GetMouseEvent(() => DataInfo.isDetection = true);
+            InputListenerr.GetMouseEvent((key) =>
+            {
+                Console.WriteLine(key);
+                if (key=="513")
+                {
+                    DataInfo.isPauseShowIcon = true;
+                }
+                if (key == "514")
+                {
+                    DataInfo.isPauseShowIcon = false;
+                }
+                DataInfo.isDetection = true;
+            });
             InputListenerr.GetKeyDownEvent((key) =>
             {
                 if (key == "M")

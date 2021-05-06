@@ -481,8 +481,6 @@
             // cb_ShowLine
             // 
             this.cb_ShowLine.AutoSize = true;
-            this.cb_ShowLine.Checked = true;
-            this.cb_ShowLine.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_ShowLine.Location = new System.Drawing.Point(27, 169);
             this.cb_ShowLine.Name = "cb_ShowLine";
             this.cb_ShowLine.Size = new System.Drawing.Size(104, 19);

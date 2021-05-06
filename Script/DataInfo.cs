@@ -40,6 +40,7 @@ namespace 原神地图辅助器
         public static int height = 1080;
         public static bool isDetection = false;
         public static bool isShowLine = false;
+        public static bool isPauseShowIcon = false;
         public static bool isMapFormClose = false;
         public static bool isUseFakePicture = false;
         public static List<string> selectTags = new List<string>();
